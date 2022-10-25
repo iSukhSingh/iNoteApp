@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import noteContext from "../context/notes/notesContext"
 
-export const AddNote = () => {
+const AddNote = () => {
     const context = useContext(noteContext);
     const {addNote} = context;
 
@@ -16,7 +16,7 @@ export const AddNote = () => {
     }
   return (
     
-    <div>
+    <div className="container my-3">
       <h1> Add A Note </h1>
       <form className="my-3">
                 <div className="mb-3">
@@ -24,15 +24,19 @@ export const AddNote = () => {
                     <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={onChange}/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="desc" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="desc" name="desc" onChange={onChange}/>
+                    <label htmlFor="Description" className="form-label">Description</label>
+                    <input type="text" className="form-control" id="Description" name="Description" onChange={onChange}/>
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                <div className="mb-3">
+                    <label htmlFor="tag" className="form-label">Tag</label>
+                    <input type="text" className="form-control" id="tag" name="tag" onChange={onChange}/>
                 </div>
+                
                 <button type="submit" className="btn btn-primary" onClick={handleClick}>Add iNote</button>
             </form>
     </div>
   )
 }
+export default AddNote
+/// 1.1 
+
