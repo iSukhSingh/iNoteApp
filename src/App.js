@@ -9,6 +9,7 @@ import Navbar from './componets/Navbar';
 import { Home} from './componets/Home';
 import About from './componets/About';
 import NoteState from './context/notes/NotesState';
+import { Alert } from './componets/Alert';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
     <NoteState>
       <Router>
         <Navbar /> 
+        <Alert message="testing the aler"/>
         <div className="container">
         <Switch>
           <Route exact path="/">
