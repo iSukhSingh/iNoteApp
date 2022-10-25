@@ -17,7 +17,6 @@ const NoteState = (props)=> {
       }
     });
     const json = await response.json()
-    console.log(json)
     setNotes(json)
   }
   // Add a Note
@@ -33,20 +32,7 @@ const NoteState = (props)=> {
       body: JSON.stringify({title, description, tag})
     });
 
-    const json = await response.json();
-    console.log(json)
-     
-
-    console.log("Adding a new note")
-    const note = {
-      "_id": "6357cb54da4a0d212ccf1c78",
-      "user": "6356d0c5f54cda6d300d9012",
-      "title": title,
-      "description": description,
-      "tag": tag,
-      "date": "2021-09-03T14:20:09.668Z",
-      "__v": 0
-    };
+    const note = await response.json();
     setNotes(notes.concat(note))
   }
       // Delete a Note
@@ -60,45 +46,41 @@ const NoteState = (props)=> {
       }
     });
     const json = response.json();
-    console.log(json)
-
-    console.log("Deleting the note with id" + id);
     const newNotes = notes.filter((note) => { return note._id !== id })
     setNotes(newNotes)
   }
-  // Edit a Note
-  const editNote = async (id, title, description, tag) => {
-    // API Call 
-    const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: 'PUT',
+      // Edit a Note
+      const editNote = async (id, title, description, tag)=>{
+        for (let index = 0; index < notes.length; index++) {
+          const element = notes[index];
+          //API CALL  
+          const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM1NmQwYzVmNTRjZGE2ZDMwMGQ5MDEyIn0sImlhdCI6MTY2NjY2NjU1OH0.5-wiE0b1-1zhBLoH7URHey7CV34BlUooY7Alf3jZv00"
       },
       body: JSON.stringify({title, description, tag})
     });
-    const json = await response.json();
-    console.log(json)
+    const json = response.json();
 
      let newNotes = JSON.parse(JSON.stringify(notes))
-    // Logic to edit in client
-    for (let index = 0; index < newNotes.length; index++) {
-      const element = newNotes[index];
-      if (element._id === id) {
-        newNotes[index].title = title;
-        newNotes[index].description = description;
-        newNotes[index].tag = tag; 
-        break; 
+          
+          
+          // Logic to edit in client
+          if(element._id === id){
+            element.title = title;
+            element.description = description;
+            element.tag = tag;
+          }
+        }
       }
-    }  
-    setNotes(newNotes);
-  }
 
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
+    <NoteContext.Provider value={{notes, addNote,deleteNote, editNote, getNotes }}>
       {props.children}
     </NoteContext.Provider>
   )
-
 }
+
 export default NoteState;
