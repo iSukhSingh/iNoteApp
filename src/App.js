@@ -12,13 +12,14 @@ import NoteState from './context/notes/NotesState';
 import { Alert } from './componets/Alert';
 import Signup from './componets/Signup';
 import Login from './componets/Login';
+
 function App() {
   return (
     <>
       <NoteState>
         <Router>
           <Navbar />
-          <Alert message="This is amazing React course" />
+          <Alert message="Alert test " />
           <div className="container">
             <Switch>
               <Route exact path="/">
