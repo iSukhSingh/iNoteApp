@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/inoteapp/static/css/main.9648bb29.css",
-    "main.js": "/inoteapp/static/js/main.7613e51d.js",
+    "main.js": "/inoteapp/static/js/main.bdebfa77.js",
     "index.html": "/inoteapp/index.html",
     "main.9648bb29.css.map": "/inoteapp/static/css/main.9648bb29.css.map",
-    "main.7613e51d.js.map": "/inoteapp/static/js/main.7613e51d.js.map"
+    "main.bdebfa77.js.map": "/inoteapp/static/js/main.bdebfa77.js.map"
   },
   "entrypoints": [
     "static/css/main.9648bb29.css",
-    "static/js/main.7613e51d.js"
+    "static/js/main.bdebfa77.js"
   ]
 }
